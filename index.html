@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radioterapie: Secvențială vs. Boost Integrat</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="card">
+            <div class="radiation-icon">☢️</div>
+            <div class="easter-egg">
+                <span class="emoji">😘</span>
+                <span class="message">Pentru Anto</span>
+            </div>
+            <h1>Radioterapie: Secvențială vs. Boost Integrat</h1>
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="sequential">Secvențială</button>
+                <button class="tab-btn" data-tab="integrated">Boost Integrat</button>
+                <button class="tab-btn" data-tab="comparison">Comparație</button>
+            </div>
+            <div class="tab-content active" id="sequential">
+                <h3>Radioterapie Secvențială</h3>
+                <div class="treatment-area">
+                    <div class="phase phase1 active">
+                        <div class="treatment-zone">Zonă largă de tratament</div>
+                        <div class="phase-info">Faza 1: 45-50 Gy (5 săptămâni)</div>
+                    </div>
+                    <div class="phase phase2">
+                        <div class="treatment-zone faded">Zonă largă de tratament</div>
+                        <div class="boost-zone">Boost</div>
+                        <div class="phase-info">Faza 2: +10-16 Gy (1-2 săptămâni)</div>
+                    </div>
+                </div>
+                <div class="time-slider-container">
+                    <input type="range" min="0" max="42" value="0" step="1" class="time-slider" id="sequentialSlider">
+                    <p>Ziua de tratament: <span class="day-display">0</span></p>
+                </div>
+                <div class="treatment-explanation"></div>
+                <canvas id="sequentialDoseChart"></canvas>
+                <p class="treatment-description">Tratamentul se face în două etape: prima dată tratăm zona mai largă, apoi ne concentrăm pe tumoare.</p>
+                <div class="info-box">
+                    <h4>Ce trebuie să știi:</h4>
+                    <ul>
+                        <li>Durează în total 6-7 săptămâni</li>
+                        <li>Permite ajustarea planului între etape</li>
+                        <li>Folosit des pentru cancere de sân, prostată și zona capului</li>
+                        <li>Eficient pentru tumori mai mari sau cu margini mai puțin clare</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="integrated">
+                <h3>Radioterapie cu Boost Integrat</h3>
+                <div class="treatment-area">
+                    <div class="phase phase1 active">
+                        <div class="treatment-zone">Zonă largă</div>
+                        <div class="boost-zone">Boost</div>
+                        <div class="phase-info">Tratament simultan: 45-50 Gy + 10-16 Gy boost (5-6 săptămâni)</div>
+                    </div>
+                </div>
+                <div class="time-slider-container">
+                    <input type="range" min="0" max="35" value="0" step="1" class="time-slider" id="integratedSlider">
+                    <p>Ziua de tratament: <span class="day-display">0</span></p>
+                </div>
+                <div class="treatment-explanation"></div>
+                <canvas id="integratedDoseChart"></canvas>
+                <p class="treatment-description">Aici, tratăm zona largă și aplicăm boost-ul simultan, pe toată durata terapiei.</p>
+                <div class="info-box">
+                    <h4>Ce trebuie să știi:</h4>
+                    <ul>
+                        <li>Durata totală e mai scurtă: 5-6 săptămâni</li>
+                        <li>Folosește tehnici avansate (IMRT, VMAT)</li>
+                        <li>Poate oferi un control tumoral mai bun</li>
+                        <li>Potrivit pentru tumori mici, bine delimitate</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="tab-content" id="comparison">
+                <h3>Comparație: Secvențială vs. Boost Integrat</h3>
+                <div class="comparison-container">
+                    <div class="treatment-comparison">
+                        <div class="treatment-column">
+                            <h4>Radioterapie Secvențială</h4>
+                            <div class="treatment-area" id="comparisonSequentialArea">
+                                <div class="phase phase1 active">
+                                    <div class="treatment-zone">Zonă largă de tratament</div>
+                                </div>
+                                <div class="phase phase2">
+                                    <div class="treatment-zone faded">Zonă largă de tratament</div>
+                                    <div class="boost-zone">Boost</div>
+                                </div>
+                            </div>
+                            <div class="treatment-explanation" id="comparisonSequentialExplanation"></div>
+                        </div>
+                        <div class="treatment-column">
+                            <h4>Radioterapie cu Boost Integrat</h4>
+                            <div class="treatment-area" id="comparisonIntegratedArea">
+                                <div class="phase phase1 active">
+                                    <div class="treatment-zone">Zonă largă</div>
+                                    <div class="boost-zone">Boost</div>
+                                </div>
+                            </div>
+                            <div class="treatment-explanation" id="comparisonIntegratedExplanation"></div>
+                        </div>
+                    </div>
+                    <div class="time-slider-container">
+                        <input type="range" min="0" max="42" value="0" step="1" class="time-slider" id="comparisonSlider">
+                        <p>Ziua de tratament: <span id="comparisonDayDisplay">0</span></p>
+                    </div>
+                    <canvas id="comparisonDoseChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="author">Creat de Dr. Bacalu Victor</div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
